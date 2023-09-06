@@ -22,11 +22,11 @@ return (str);
 void execute(char *buffer)
 {
 char *flags[] = {"/bin/", NULL};
-char *flagscpy = malloc(200);
-strcpy(flagscpy, flags[0]);
+char *flagscpy;
 rem_newln(buffer);
 
-printf("%s\n", buffer);
+flagscpy = malloc((strlen(flags[0]) + strlen(buffer)) * sizeof(char) + 1);
+strcpy(flagscpy, flags[0]);
 flagscpy = strcat(flagscpy, buffer);
 
 if ((execve(flagscpy, flags, NULL)) == -1)
