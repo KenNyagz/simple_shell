@@ -19,11 +19,10 @@ return (str);
 *Return: void
 */
 
-void execute(char *buffer)
+/*void execute(char *buffer)
 {
 char *flags[] = {"/bin/", NULL};
 char *flagscpy;
-rem_newln(buffer);
 
 flagscpy = malloc((strlen(flags[0]) + strlen(buffer)) * sizeof(char) + 1);
 strcpy(flagscpy, flags[0]);
@@ -33,4 +32,4 @@ if ((execve(flagscpy, flags, NULL)) == -1)
 	perror("Cannot find command");
 
 free(flagscpy);
-}
+}*/

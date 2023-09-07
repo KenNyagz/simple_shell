@@ -9,9 +9,11 @@
 
 int main(void)
 {
-int readrtn;
-char *buffer = NULL;
+int readrtn, i = 0;
+char *buffer = NULL, *flag = NULL;
 size_t charnum = 0;
+char **cmd = NULL;
+const char* path = "/bin/";
 
 while (1)
 {
@@ -22,10 +24,34 @@ while (1)
 	if (strcmp(buffer, "\n") == 0)
 		continue;
 
-	execute(buffer);
+	cmd = stringparse(buffer);
+	printf("%s\n", cmd[0]);
+	/*if (cmd != NULL)
+	{
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(cmd);
+	}*/
+
+	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
+	strcpy(flag, path);
+	printf("%s\n", flag);
+	strcat(flag, cmd[0]);
+
+	if ((execve(flag, cmd, NULL)) == -1)
+		perror("Execution failed, try again");
+
+	if (cmd != NULL)
+	{
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(cmd);
+	}
+
+	/*execute(buffer);*/
 
 }
-
+free(flag);
 free(buffer);
 return (0);
 }

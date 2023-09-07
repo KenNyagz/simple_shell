@@ -14,6 +14,6 @@
 void execute(char *buffer);
 char *rem_newln(char *str);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
-
+char **stringparse(char *buffer);
 
 #endif
