@@ -24,16 +24,7 @@ while (1)
 		continue;
 
 	cmd = stringparse(buffer);
-	printf("%s\n", cmd[0]);
 	execute(cmd);
-
-/*	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
-	strcpy(flag, path);
-	printf("%s\n", flag);
-	strcat(flag, cmd[0]);
-
-	if ((execve(flag, cmd, NULL)) == -1)
-		perror("Execution failed, try again");*/
 
 	if (cmd != NULL)
 	{
@@ -41,8 +32,6 @@ while (1)
 			free(cmd[i]);
 		free(cmd);
 	}
-
-	/*execute(buffer);*/
 
 }
 free(flag);

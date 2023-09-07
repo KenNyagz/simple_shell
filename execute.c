@@ -26,7 +26,7 @@ void execute(char **cmd)
 
 	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
 	strcpy(flag, path);
-	printf("%s\n", flag);
+
 	strcat(flag, cmd[0]);
 
 	if ((execve(flag, cmd, NULL)) == -1)
