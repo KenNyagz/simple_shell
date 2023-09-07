@@ -9,9 +9,10 @@
 
 int main(void)
 {
-int readrtn;
-char *buffer = NULL;
+int readrtn, i = 0;
+char *buffer = NULL, *flag = NULL;
 size_t charnum = 0;
+char **cmd = NULL;
 
 while (1)
 {
@@ -22,10 +23,18 @@ while (1)
 	if (strcmp(buffer, "\n") == 0)
 		continue;
 
-	execute(buffer);
+	cmd = stringparse(buffer);
+	execute(cmd);
+
+	if (cmd != NULL)
+	{
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(cmd);
+	}
 
 }
-
+free(flag);
 free(buffer);
 return (0);
 }
