@@ -19,17 +19,18 @@ return (str);
 *Return: void
 */
 
-/*void execute(char *buffer)
+void execute(char **cmd)
 {
-char *flags[] = {"/bin/", NULL};
-char *flagscpy;
+	const char *path = "/bin/";
+	char *flag;
 
-flagscpy = malloc((strlen(flags[0]) + strlen(buffer)) * sizeof(char) + 1);
-strcpy(flagscpy, flags[0]);
-flagscpy = strcat(flagscpy, buffer);
+	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
+	strcpy(flag, path);
+	printf("%s\n", flag);
+	strcat(flag, cmd[0]);
 
-if ((execve(flagscpy, flags, NULL)) == -1)
-	perror("Cannot find command");
+	if ((execve(flag, cmd, NULL)) == -1)
+		perror("Execution failed, try again");
 
-free(flagscpy);
-}*/
+free(flag);
+}

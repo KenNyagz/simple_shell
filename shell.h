@@ -11,7 +11,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-void execute(char *buffer);
+void execute(char **cmd);
 char *rem_newln(char *str);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
 char **stringparse(char *buffer);
