@@ -26,7 +26,10 @@ while (1)
 
 	cmd = stringparse(buffer);
 	cmdpath = get_path_command(cmd);
-	execute(cmdpath, cmd);
+	if (!(access(cmdpath, F_OK) == 0))
+		perror("command not found");
+	else
+		execute(cmdpath, cmd);
 
 	if (cmd != NULL)
 	{
