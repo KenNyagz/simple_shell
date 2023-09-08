@@ -11,9 +11,11 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-void execute(char **cmd);
+void execute(char *cmdpath, char **cmd);
 char *rem_newln(char *str);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
 char **stringparse(char *buffer);
+char *dirconcat(char *str_a, char *str_b);
+char *get_path_command(char **flags);
 
 #endif

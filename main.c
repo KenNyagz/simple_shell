@@ -13,6 +13,7 @@ int readrtn, i = 0;
 char *buffer = NULL, *flag = NULL;
 size_t charnum = 0;
 char **cmd = NULL;
+char *cmdpath;
 
 while (1)
 {
@@ -24,7 +25,8 @@ while (1)
 		continue;
 
 	cmd = stringparse(buffer);
-	execute(cmd);
+	cmdpath = get_path_command(cmd);
+	execute(cmdpath, cmd);
 
 	if (cmd != NULL)
 	{

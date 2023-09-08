@@ -19,18 +19,18 @@ return (str);
 *Return: void
 */
 
-void execute(char **cmd)
+void execute(char *cmdpath, char **cmd)
 {
-	const char *path = "/bin/";
+	/*const char *path = "/bin/";
 	char *flag;
 
 	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
 	strcpy(flag, path);
 
-	strcat(flag, cmd[0]);
+	strcat(flag, cmd[0]);*/
 
-	if ((execve(flag, cmd, NULL)) == -1)
+	if ((execve(cmdpath, cmd, NULL)) == -1)
 		perror("Execution failed, try again");
 
-free(flag);
+/*free(flag);*/
 }
