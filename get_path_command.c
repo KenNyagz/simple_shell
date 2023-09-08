@@ -57,10 +57,13 @@ char *get_path_command(char **cmd)
 			cmd[0] = dirconcat(tokdirs[i], cmd[0]);
 			break;
 		}
-		free(tokdirs[i]);
+		/*free(tokdirs[i]);*/
 	}
+	for (i = 0; i < tkn_count; i++)
+		free(tokdirs[i]);
 	chdir(start_dir);
 	free(start_dir);
+	free(tokdirs[i]);
 	free(tokdirs);
 	free(the_path);
 	return (cmd[0]);

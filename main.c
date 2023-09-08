@@ -10,10 +10,11 @@
 int main(void)
 {
 int readrtn, i = 0;
-char *buffer = NULL, *flag = NULL;
+char *buffer = NULL;
 size_t charnum = 0;
 char **cmd = NULL;
 char *cmdpath;
+pid_t pid;
 
 while (1)
 {
@@ -29,7 +30,18 @@ while (1)
 	if (!(access(cmdpath, F_OK) == 0))
 		perror("command not found");
 	else
-		execute(cmdpath, cmd);
+	{
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("Fork failed");
+			return (-1);
+		}
+		else if (pid == 0)
+			execute(cmdpath, cmd);
+		else
+			wait(NULL);
+	}
 
 	if (cmd != NULL)
 	{
@@ -39,7 +51,6 @@ while (1)
 	}
 
 }
-free(flag);
 free(buffer);
 return (0);
 }
