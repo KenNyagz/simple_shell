@@ -16,7 +16,10 @@ char *rem_newln(char *str);
 int execve(const char *pathname, char *const argv[], char *const envp[]);
 char **stringparse(char *buffer);
 char *dirconcat(char *str_a, char *str_b);
-char *get_path_command(char **flags);
+/*char *get_path_command(char **flags);*/
 int access(const char *pathname, int mode);
+
+char **get_tok_path(void);
+char *get_path_command(char **cmd, char **tokdirs);
 
 #endif

@@ -4,7 +4,7 @@
   *stringparse - parses the string
   *@buffer: string to be parsed
   *Return: array of strings
- */ 
+ */
 
 char **stringparse(char *buffer)
 {

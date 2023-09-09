@@ -6,16 +6,13 @@
 *
 *Return: 0 -success
 */
-
 int main(void)
 {
 int readrtn, i = 0;
-char *buffer = NULL;
+char *buffer = NULL, *cmdpath;
 size_t charnum = 0;
-char **cmd = NULL;
-char *cmdpath;
+char **cmd = NULL, **tokdirs = NULL;
 pid_t pid;
-
 while (1)
 {
 	write(STDOUT_FILENO, "$ ", 2);
@@ -24,9 +21,8 @@ while (1)
 		break;
 	if (strcmp(buffer, "\n") == 0)
 		continue;
-
 	cmd = stringparse(buffer);
-	cmdpath = get_path_command(cmd);
+	cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
 		perror("command not found");
 	else
@@ -42,14 +38,12 @@ while (1)
 		else
 			wait(NULL);
 	}
-
 	if (cmd != NULL)
 	{
 		for (i = 0; cmd[i] != NULL; i++)
 			free(cmd[i]);
 		free(cmd);
 	}
-
 }
 free(buffer);
 return (0);

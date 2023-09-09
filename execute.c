@@ -15,22 +15,14 @@ return (str);
 
 /**
 *execute - executes a fucntion from the path directories
-*@buffer: the command string
+*@cmdpath: 1st arguement for execve
+*@cmd: pointer to array containing arguements to cmdpath
 *Return: void
 */
 
 void execute(char *cmdpath, char **cmd)
 {
-	/*const char *path = "/bin/";
-	char *flag;
-
-	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
-	strcpy(flag, path);
-
-	strcat(flag, cmd[0]);*/
 
 	if ((execve(cmdpath, cmd, NULL)) == -1)
 		perror("Execution failed, try again");
-
-/*free(flag);*/
 }

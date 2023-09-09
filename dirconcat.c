@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
+  *dirconcat - concatenates two strings
   *
+  *@str_a: first string
+  *@str_b: second string
   *
-  *
-  *
-  *
+  *Return: concatenated string
   */
 
 char *dirconcat(char *str_a, char *str_b)
