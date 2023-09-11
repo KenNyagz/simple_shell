@@ -9,9 +9,8 @@
 int main(void)
 {
 int readrtn, i = 0;
-char *buffer = NULL, *cmdpath;
+char *buffer = NULL, *cmdpath, **cmd = NULL, **tokdirs = NULL;
 size_t charnum = 0;
-char **cmd = NULL, **tokdirs = NULL;
 pid_t pid;
 while (1)
 {
