@@ -22,6 +22,9 @@ while (1)
 	if (strcmp(buffer, "\n") == 0)
 		continue;
 	cmd = stringparse(buffer);
+	if (strcmp(cmd[0], "exit") == 0)
+		exithandling(cmd, buffer);
+	else
 	cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
 		perror("command not found");
