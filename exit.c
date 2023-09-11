@@ -21,8 +21,6 @@ int exithandling(char **cmd, char *buffer)
 	{
 		return (-1);
 	}
-	else if (status != 0)
-		printf("%d\n", status);
 
 	for (i = 0; cmd[i] != NULL; i++)
 		free(cmd[i]);
