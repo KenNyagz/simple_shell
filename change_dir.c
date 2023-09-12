@@ -7,32 +7,42 @@
 *
 */
 
-void changedir(char **cmd)
+void changedir(char *buf)
 {
-char *oldpwd, *newpwd;
-
-oldpwd = getcwd(NULL, 0);
-setenv("OLDPWD", oldpwd, 1);
-
-	if (cmd[1] == NULL)
+char *newpwd, *lasttkn = NULL;
+char *tkn, *bufcp;
+	if (strcmp(buf, "cd") == 0)
 	{
 		newpwd = getenv("HOME");
 		chdir(newpwd);
+		setenv("PWD", newpwd, 1);
+		return (0);
 	}
-	else if (strcmp(cmd[1], "-") == 0)
+	else if (strcmp(buf, "cd -") == 0)
 	{
 		newpwd = getenv("OLDPWD");
 		chdir(newpwd);
 		setenv("PWD",  newpwd, 1);
+		write(STDOUT_FILENO, newpwd, strlen(newpwd));
+		write(STDOUT_FILENO, "\n", 1);
+		return (0);
 	}
-	else if (chdir(cmd[1]) == 0)
+	bufcp = strdup(buf);
+	tkn = strtok(bufcp, " ");
+	while (tkn != NULL)
 	{
-		newpwd = getcwd(NULL, 0);
+		lasttkn = tkn;
+		tkn = strtok(NULL, " ");
+	}
+	if (chdir(lasttkn) == 0)
+	{
+		newpwd = malloc(256);
+		getcwd(newpwd, 256);
 		setenv("PWD", newpwd, 1);
+		free(newpwd);
 	}
 	else
-		perror("Unable to change to directory");
-
-free(oldpwd);
-free(newpwd);
+		perror("Cannot change to directory");
+free(bufcp);
+return (0);
 }
