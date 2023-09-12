@@ -16,7 +16,7 @@ char *tkn, *bufcp;
 		newpwd = getenv("HOME");
 		chdir(newpwd);
 		setenv("PWD", newpwd, 1);
-		return (0);
+		return;
 	}
 	else if (strcmp(buf, "cd -") == 0)
 	{
@@ -25,7 +25,7 @@ char *tkn, *bufcp;
 		setenv("PWD",  newpwd, 1);
 		write(STDOUT_FILENO, newpwd, strlen(newpwd));
 		write(STDOUT_FILENO, "\n", 1);
-		return (0);
+		return;
 	}
 	bufcp = strdup(buf);
 	tkn = strtok(bufcp, " ");
@@ -44,5 +44,4 @@ char *tkn, *bufcp;
 	else
 		perror("Cannot change to directory");
 free(bufcp);
-return (0);
 }
