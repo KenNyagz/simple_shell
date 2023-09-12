@@ -2,7 +2,7 @@
 
 /**
 *changedir - changes directory
-*@cmd: strings array with cd command and dir name
+*@buf: strings array with cd command and dir name
 *Return: void
 *
 */
