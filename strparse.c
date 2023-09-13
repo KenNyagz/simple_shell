@@ -31,8 +31,7 @@ char **stringparse(char *buffer)
 	tokencp = strtok(buffercpy, " ");
 	while (tokencp != NULL)
 	{
-		flagsarr[i] = strdup(tokencp);
-		printf("%s\n", flagsarr[i]);
+		flagsarr[i] = strdup(tokencp);	
 		if (flagsarr[i] == NULL)
 		{
 			for (j = 0; j < i; j++)

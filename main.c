@@ -12,6 +12,9 @@ int readrtn, i = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 pid_t pid;
+if (!isatty(STDIN_FILENO))
+	perror("Non-interactive mode. Run script to continue");
+else
 while (1)
 {
 	write(STDOUT_FILENO, "$ ", 2);
