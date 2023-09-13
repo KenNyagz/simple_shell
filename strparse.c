@@ -11,8 +11,6 @@ char **stringparse(char *buffer)
 	char *token = NULL, *buffercpy = NULL, **flagsarr = NULL, *tokencp = NULL;
 	int tokencnt = 0, i = 0, j = 0;
 
-	rem_newln(buffer);
-
 	buffercpy = malloc(strlen(buffer) * sizeof(char) + 1);
 
 	if (buffercpy == NULL)
@@ -34,6 +32,7 @@ char **stringparse(char *buffer)
 	while (tokencp != NULL)
 	{
 		flagsarr[i] = strdup(tokencp);
+		printf("%s\n", flagsarr[i]);
 		if (flagsarr[i] == NULL)
 		{
 			for (j = 0; j < i; j++)

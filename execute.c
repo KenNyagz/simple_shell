@@ -7,6 +7,7 @@
 char *rem_newln(char *str)
 {
 int length = strlen(str);
+
 if (length > 0 && str[length - 1] == '\n')
 	str[length - 1] = '\0';
 

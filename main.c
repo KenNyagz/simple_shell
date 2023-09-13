@@ -9,7 +9,7 @@
 int main(void)
 {
 int readrtn, i = 0;
-char *buffer = NULL, *cmdpath, **cmd = NULL, **tokdirs = NULL;
+char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 pid_t pid;
 while (1)
@@ -18,8 +18,10 @@ while (1)
 	readrtn = getline(&buffer, &charnum, stdin);
 	if (readrtn == -1)
 		break;
-	if (strcmp(buffer, "\n") == 0)
+	if ((strcmp(buffer, "\n") == 0) || (buffer[0]  == '#'))
 		continue;
+
+	new_buffer(&buffer);
 	cmd = stringparse(buffer);
 	if (strcmp(cmd[0], "exit") == 0)
 		exithandling(cmd, buffer);
@@ -46,6 +48,7 @@ while (1)
 			free(cmd[i]);
 		free(cmd);
 	}
+
 }
 free(buffer);
 return (0);
