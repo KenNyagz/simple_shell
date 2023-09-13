@@ -21,5 +21,6 @@ int exithandling(char **cmd, char *buffer);
 char **get_tok_path(void);
 char *get_path_command(char **cmd, char **tokdirs);
 void changedir(char *buf);
+void new_buffer(char **buffer);
 
 #endif
