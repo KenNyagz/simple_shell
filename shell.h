@@ -11,6 +11,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+extern char **environ;
+
 void execute(char *cmdpath, char **cmd);
 char *rem_newln(char *str);
 int execve(const char *pathname, char *const argv[], char *const envp[]);

@@ -24,6 +24,6 @@ return (str);
 void execute(char *cmdpath, char **cmd)
 {
 
-	if ((execve(cmdpath, cmd, NULL)) == -1)
+	if ((execve(cmdpath, cmd, environ)) == -1)
 		perror("Execution failed, try again");
 }
