@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
-  *stringparse - parses the string
+  *multi_cmd - parses the string for multiple commands
   *@buffer: string to be parsed
-  *Return: array of strings
- */
+  *Return: array of commands
+  */
 
-char **stringparse(char *buffer)
+char **multi_cmd(char *buffer)
 {
-	char *token = NULL, *buffercpy = NULL, **flagsarr = NULL, *tokencp = NULL;
-	char *delimita = " ";
+	char *token = NULL, *buffercpy = NULL, **cmdsarr = NULL, *tokencp = NULL;
+	char *delimita = ";";
 	int tokencnt = 0, i = 0, j = 0;
 
 	buffercpy = malloc(strlen(buffer) * sizeof(char) + 1);
@@ -27,24 +27,23 @@ char **stringparse(char *buffer)
 		tokencnt++;
 		token = strtok(NULL, delimita);
 	}
-
-	flagsarr = malloc(sizeof(char *) * (tokencnt + 1));
+	cmdsarr = malloc(sizeof(char *) * (tokencnt + 1));
 	tokencp = strtok(buffercpy, delimita);
 	while (tokencp != NULL)
 	{
-		flagsarr[i] = strdup(tokencp);
-		if (flagsarr[i] == NULL)
+		cmdsarr[i] = strdup(tokencp);	
+		if (cmdsarr[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
-				free(flagsarr[j]);
-			free(flagsarr);
+				free(cmdsarr[j]);
+			free(cmdsarr);
 			free(buffercpy);
 			return (NULL);
 		}
 		tokencp = strtok(NULL, delimita);
 		i++;
 	}
-	flagsarr[i] = NULL;
+	cmdsarr[i] = NULL;
 	free(buffercpy);
-	return (flagsarr);
+	return (cmdsarr);
 }

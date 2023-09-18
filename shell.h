@@ -26,4 +26,12 @@ void changedir(char *buf);
 void new_buffer(char **buffer);
 void variablerep(char *buf);
 
+void handlers_init(void);
+void h_sigint(int sig);
+void h_sigterm(int sig);
+void h_sigsegv(int sig);
+void h_sigchld(int sig);
+
+char **multi_cmd(char *buffer);
+
 #endif
