@@ -44,24 +44,23 @@ char *var_rep, *var_rplc;
 	}
 }
 
-/*
-*int main()
-*{
-*char *buf = NULL;
-*size_t n;
-*int readrtn;
-*while(1)
-*{
-*printf("$ ");
-*readrtn = getline(&buf, &n, stdin);
-*if (readrtn == -1)
-*{
-*	free(buf);
-*	break;
-*}
-*variablerep(buf);
-*}
-* **free(buf);
-*return (0);
-*}
-*/
+
+/*int main()
+{
+char *buf = NULL;
+size_t n;
+int readrtn;
+while(1)
+{
+printf("$ ");
+readrtn = getline(&buf, &n, stdin);
+if (readrtn == -1)
+{
+	free(buf);
+	break;
+}
+variablerep(buf);
+}
+free(buf);
+return (0);
+}*/

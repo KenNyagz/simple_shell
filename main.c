@@ -10,8 +10,11 @@ int main(int argc, char *argv[])
 {
 int readrtn, i = 0, count = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
+char **cmdsa = NULL;
 size_t charnum = 0;
 pid_t pid;
+
+/*handlers_init();*/
 
 if (!(argc != 0))
 	perror("There are 0 arguements. Please provide atleast 1 arguement");
@@ -23,6 +26,7 @@ while (1)
 {
 	count++;
 	write(STDOUT_FILENO, "$ ", 2);
+	fflush(stdout);
 	readrtn = getline(&buffer, &charnum, stdin);
 	if (readrtn == -1)
 		break;
@@ -30,14 +34,12 @@ while (1)
 		continue;
 
 	new_buffer(&buffer);
-	cmd = stringparse(buffer);
+	cmd = stringparse(cmdsa[i]);
 	if (strcmp(cmd[0], "exit") == 0)
 		exithandling(cmd, buffer);
 	else
-	cmdpath = get_path_command(cmd, tokdirs);
-	/*count++;*/
+		cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
-		/*perror("command not found");*/
 		printf("%s: %d: %s: not found\n", argv[0], count, buffer);
 	else
 	{
@@ -58,7 +60,6 @@ while (1)
 			free(cmd[i]);
 		free(cmd);
 	}
-
 }
 free(buffer);
 return (0);
