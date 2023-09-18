@@ -33,5 +33,6 @@ void h_sigsegv(int sig);
 void h_sigchld(int sig);
 
 void _free(char **cmd);
+void _unsetenv(char *buf);
 
 #endif

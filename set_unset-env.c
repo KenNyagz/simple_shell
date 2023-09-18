@@ -31,6 +31,7 @@ char *var_arr[2] = {NULL, NULL};
 	*{
 	*	printf("%s\n", environ[i]);
 	*}
+	*printf("\n");
 	*/
 free(var_arr[0]);
 free(var_arr[1]);
@@ -49,6 +50,7 @@ free(var_arr[1]);
 *if (rdrtn == -1)
 *	break;
 *_setenv(buffer);
+*_unsetenv(buffer);
 *}
 *free(buffer);
 *return (0);
@@ -63,7 +65,14 @@ free(var_arr[1]);
 *Return: Void
 */
 
-/*void _unsetenv(char *buf)
+void _unsetenv(char *buf)
 {
+int i;
 
-}*/
+	if ((unsetenv(buf)) != 0)
+		perror("Could not unset variable");
+
+	for (i = 0; environ[i] != NULL; i++)
+		printf("%s\n", environ[i]);
+
+}

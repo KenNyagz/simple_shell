@@ -9,9 +9,11 @@
 
 void h_sigint(int sig)
 {
-	/*char *action;
-
-	action = "Interrupted. Exit or press enter to continue";*/
+	/*
+	*char *action;
+	*
+	*action = "Interrupted. Exit or press enter to continue";
+	*/
 	if (sig == SIGINT)
 	{
 		write(STDOUT_FILENO, "\n", 1);
