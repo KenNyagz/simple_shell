@@ -6,7 +6,7 @@
 *Return: Void
 */
 
-<<<<<<< HEAD
+
 void _setenv(char *buf)
 {
 int i = 0;
@@ -63,27 +63,7 @@ free(var_arr[1]);
 *Return: Void
 */
 
-void _unsetenv(char *buf)
+/*void _unsetenv(char *buf)
 {
 
-
-
-
-=======
-void setenv(char **cmd)
-{
-    char *varname = cmd[1]i;
-    char *value = cmd[2];
-
-    int result = setenv(varname, value, 1); /*Overwrite if the variable already exists*/
-
-    if (result != 0) {
-        perror("setenv failed");
-        return 1;
-    }
-
-    else
-	    write(xxxxxxx);
-    return
->>>>>>> dfe9d8c29e97bf9d81e9040525da8210029bfc04
-}
+}*/

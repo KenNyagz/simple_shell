@@ -23,7 +23,36 @@ return (str);
 
 void execute(char *cmdpath, char **cmd)
 {
+pid_t pid;
 
-	if ((execve(cmdpath, cmd, environ)) == -1)
-		perror("Execution failed, try again");
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("Fork failed");
+		return;
+	}
+	else if (pid == 0)
+	{
+		if ((execve(cmdpath, cmd, environ)) == -1)
+			perror("Execution failed, try again");
+	}
+	else
+		wait(NULL);
+
+}
+
+/**
+*_free - Frees array of command strings
+*@cmd: Array containing commands
+*Return: Void
+*/
+
+void _free(char **cmd)
+{
+int i;
+
+for (i = 0; cmd[i] != NULL; i++)
+	free(cmd[i]);
+free(cmd);
+
 }

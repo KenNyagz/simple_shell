@@ -9,12 +9,13 @@
 
 void h_sigint(int sig)
 {
-	char *action;
+	/*char *action;
 
-	action = "Interrupted. Exit or press enter to continue";
+	action = "Interrupted. Exit or press enter to continue";*/
 	if (sig == SIGINT)
 	{
-		write(STDOUT_FILENO, action, 44);
+		write(STDOUT_FILENO, "\n", 1);
+		return;
 	}
 }
 

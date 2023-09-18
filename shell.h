@@ -32,6 +32,6 @@ void h_sigterm(int sig);
 void h_sigsegv(int sig);
 void h_sigchld(int sig);
 
-char **multi_cmd(char *buffer);
+void _free(char **cmd);
 
 #endif
