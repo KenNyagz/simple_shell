@@ -13,12 +13,9 @@ char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 
 handlers_init();
-if (!(argc != 0))
-	perror("There are 0 arguements. Please provide atleast 1 arguement");
-else
 if (!isatty(STDIN_FILENO))
 	perror("Non-interactive mode. Run script to continue");
-else
+
 while (1)
 {
 	count++;
@@ -33,7 +30,7 @@ while (1)
 	new_buffer(&buffer);
 	cmd = stringparse(buffer);
 	if (strcmp(cmd[0], "exit") == 0)
-		exithandling(cmd, buffer);
+		exithandling(cmd, buffer, argc, argv);
 	else
 		cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
