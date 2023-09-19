@@ -28,7 +28,7 @@ char **stringparse(char *buffer)
 		token = strtok(NULL, delimita);
 	}
 
-	flagsarr = malloc(sizeof(char *) * (tokencnt + 2));
+	flagsarr = malloc(sizeof(char *) * (tokencnt + 1));
 	tokencp = strtok(buffercpy, delimita);
 	while (tokencp != NULL)
 	{

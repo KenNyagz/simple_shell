@@ -52,26 +52,25 @@ void h_sigsegv(int sig)
 	if (sig == SIGSEGV)
 	{
 		write(STDOUT_FILENO, action, 20);
-		exit(0);
+		return;
 	}
 }
 
 /**
-  *h_sigcont - handles bad memory access
+  *h_sigtstp - handles bad memory access
   *
   *@sig: integer corresponding to signal to be sent
   *
   */
 
-void h_sigcont(int sig)
+void h_sigtstp(int sig)
 {
 	char *action;
 
 	action = "\n";
-	if (sig == SIGCONT)
+	if (sig == SIGTSTP)
 	{
 		write(STDOUT_FILENO, action, 2);
-		exit(0);
 	}
 }
 
@@ -111,10 +110,10 @@ void handlers_init(void)
 		perror("Sigsegv action failed");
 		exit(1);
 	}
-	sig_action_4.sa_handler = h_sigcont;
+	sig_action_4.sa_handler = h_sigtstp;
 	sigemptyset(&sig_action_4.sa_mask);
 	sig_action_4.sa_flags = 0;
-	if (sigaction(SIGCONT, &sig_action_4, NULL) == -1)
+	if (sigaction(SIGTSTP, &sig_action_4, NULL) == -1)
 	{
 		perror("Sicont action failed");
 		exit(1);

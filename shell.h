@@ -30,27 +30,24 @@ void handlers_init(void);
 void h_sigint(int sig);
 void h_sigterm(int sig);
 void h_sigsegv(int sig);
-void h_sigchld(int sig);
+void h_sigtstp(int sig);
 
 void _free(char **cmd);
 void _unsetenv(char *buf);
 
-<<<<<<< HEAD
 /**
 *struct inbuiltcmd - links input string to relevant function
 *@str: string from stdinput(Conveying user's intent)
 *@func: function to execute desired result
 *Description:
-*/
+*
 
 typedef struct inbuiltcmd
 {
 	char *str;
 	void (*func)(char **cmd);
-} builtin;
+} builtin;*/
 
-=======
 int cli_arg(char **argv);
->>>>>>> 858ab06345643fffb8ea752280a276ec89180a2e
 
 #endif

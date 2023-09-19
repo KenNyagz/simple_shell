@@ -7,7 +7,7 @@
 *
 */
 
-void checkbuiltins(char **cmd)
+/*void checkbuiltins(char **cmd)
 {
 
 builtin builtin_arr[]{
@@ -19,4 +19,4 @@ builtin builtin_arr[]{
 }
 
 
-}
+}*/
