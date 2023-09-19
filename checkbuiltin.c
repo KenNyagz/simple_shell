@@ -7,7 +7,7 @@
 *
 */
 
-void checkbuiltins(char **cmd)
+/*void checkbuiltins(char **cmd)
 {
 int i = 0;
 
@@ -43,6 +43,10 @@ if(getline(&buffer, &n, stdin) == -1)
 checkbuiltins(buffer);
 }
 
+<<<<<<< HEAD
 free(buffer);
 return (0);
 }
+=======
+}*/
+>>>>>>> a9795c8178e12ab57ee9c40cbd6621817a0d14a5
