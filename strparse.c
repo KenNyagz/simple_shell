@@ -12,7 +12,7 @@ char **stringparse(char *buffer)
 	char *delimita = " ";
 	int tokencnt = 0, i = 0, j = 0;
 
-	buffercpy = malloc(strlen(buffer) * sizeof(char) + 1);
+	buffercpy = malloc(strlen(buffer) * sizeof(char) + 256);
 
 	if (buffercpy == NULL)
 	{
@@ -28,7 +28,7 @@ char **stringparse(char *buffer)
 		token = strtok(NULL, delimita);
 	}
 
-	flagsarr = malloc(sizeof(char *) * (tokencnt + 1));
+	flagsarr = malloc(sizeof(char *) * (tokencnt + 2));
 	tokencp = strtok(buffercpy, delimita);
 	while (tokencp != NULL)
 	{

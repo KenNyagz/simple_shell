@@ -19,7 +19,7 @@ void new_buffer(char **buffer)
 	if (rmv_hash != NULL)
 	{
 		len = strlen(*buffer) - strlen(rmv_hash);
-		buff = (char *)malloc(len + 64);
+		buff = (char *)malloc(len + 256);
 
 		if (buff != NULL)
 		{
