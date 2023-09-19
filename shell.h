@@ -35,4 +35,18 @@ void h_sigchld(int sig);
 void _free(char **cmd);
 void _unsetenv(char *buf);
 
+/**
+*struct inbuiltcmd - links input string to relevant function
+*@str: string from stdinput(Conveying user's intent)
+*@func: function to execute desired result
+*Description:
+*/
+
+typedef struct inbuiltcmd
+{
+	char *str;
+	void (*func)(char **cmd);
+} builtin;
+
+
 #endif
