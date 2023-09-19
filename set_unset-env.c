@@ -76,3 +76,21 @@ int i;
 		printf("%s\n", environ[i]);
 
 }
+
+/**
+*_printenv - prints environment
+*@flags: input string
+*
+*Return: void
+*/
+
+void _printenv(char *buffer)
+{
+int i;
+	if ((strcmp(buffer, "printenv") == 0) || (strcmp(buffer, "env") == 0))
+		for (i = 0; environ[i] != NULL ; i++)
+		{
+			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+			write(1, "\n", 1);
+		}
+}

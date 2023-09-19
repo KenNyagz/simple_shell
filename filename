@@ -1,4 +1,4 @@
-env
+pwd
 whoami
 cal
-ls
+ls -l

@@ -22,10 +22,13 @@ int cli_arg(char **argv)
 
 	while (fgets(buff, sizeof(buff), filename) != NULL)
 	{
-		buff[strcspn(buff, "\n")] = '\0';
+		/*buff[strlen(buff) - 1] = '\0';
+		buff[strlen(buff) - 2] = '\0';*/
 
 		cmd = stringparse(buff);
 		cmdpath = get_path_command(cmd, tokdirs);
+		/*if (!(access(cmdpath, F_OK) == 0))*/
+	               /* dprintf(STDOUT_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);*/
 		execute(cmdpath, cmd);
 
 		free(cmd);

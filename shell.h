@@ -25,6 +25,7 @@ char *get_path_command(char **cmd, char **tokdirs);
 void changedir(char *buf);
 void new_buffer(char **buffer);
 void variablerep(char *buf);
+void _printenv(char *buffer);
 
 void handlers_init(void);
 void h_sigint(int sig);
@@ -33,9 +34,10 @@ void h_sigsegv(int sig);
 void h_sigchld(int sig);
 
 void _free(char **cmd);
+void _setenv(char *buf);
 void _unsetenv(char *buf);
 
-<<<<<<< HEAD
+
 /**
 *struct inbuiltcmd - links input string to relevant function
 *@str: string from stdinput(Conveying user's intent)
@@ -49,8 +51,8 @@ typedef struct inbuiltcmd
 	void (*func)(char **cmd);
 } builtin;
 
-=======
+
 int cli_arg(char **argv);
->>>>>>> 858ab06345643fffb8ea752280a276ec89180a2e
+
 
 #endif
