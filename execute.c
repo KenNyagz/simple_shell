@@ -7,6 +7,7 @@
 char *rem_newln(char *str)
 {
 int length = strlen(str);
+
 if (length > 0 && str[length - 1] == '\n')
 	str[length - 1] = '\0';
 
@@ -15,22 +16,43 @@ return (str);
 
 /**
 *execute - executes a fucntion from the path directories
-*@buffer: the command string
+*@cmdpath: 1st arguement for execve
+*@cmd: pointer to array containing arguements to cmdpath
 *Return: void
 */
 
-void execute(char **cmd)
+void execute(char *cmdpath, char **cmd)
 {
-	const char *path = "/bin/";
-	char *flag;
+pid_t pid;
 
-	flag = (char*)malloc((strlen(path)) + (strlen(cmd[0])) + 1);
-	strcpy(flag, path);
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("Fork failed");
+		return;
+	}
+	else if (pid == 0)
+	{
+		if ((execve(cmdpath, cmd, environ)) == -1)
+			perror("Execution failed, try again");
+	}
+	else
+		wait(NULL);
 
-	strcat(flag, cmd[0]);
+}
 
-	if ((execve(flag, cmd, NULL)) == -1)
-		perror("Execution failed, try again");
+/**
+*_free - Frees array of command strings
+*@cmd: Array containing commands
+*Return: Void
+*/
 
-free(flag);
+void _free(char **cmd)
+{
+int i;
+
+for (i = 0; cmd[i] != NULL; i++)
+	free(cmd[i]);
+free(cmd);
+
 }

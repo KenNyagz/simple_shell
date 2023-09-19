@@ -4,16 +4,15 @@
   *stringparse - parses the string
   *@buffer: string to be parsed
   *Return: array of strings
- */ 
+ */
 
 char **stringparse(char *buffer)
 {
 	char *token = NULL, *buffercpy = NULL, **flagsarr = NULL, *tokencp = NULL;
+	char *delimita = " ";
 	int tokencnt = 0, i = 0, j = 0;
 
-	rem_newln(buffer);
-
-	buffercpy = malloc(strlen(buffer) * sizeof(char) + 1);
+	buffercpy = malloc(strlen(buffer) * sizeof(char) + 256);
 
 	if (buffercpy == NULL)
 	{
@@ -22,15 +21,15 @@ char **stringparse(char *buffer)
 	}
 
 	strcpy(buffercpy, buffer);
-	token = strtok(buffer, " ");
+	token = strtok(buffer, delimita);
 	while (token != NULL)
 	{
 		tokencnt++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, delimita);
 	}
 
 	flagsarr = malloc(sizeof(char *) * (tokencnt + 1));
-	tokencp = strtok(buffercpy, " ");
+	tokencp = strtok(buffercpy, delimita);
 	while (tokencp != NULL)
 	{
 		flagsarr[i] = strdup(tokencp);
@@ -42,7 +41,7 @@ char **stringparse(char *buffer)
 			free(buffercpy);
 			return (NULL);
 		}
-		tokencp = strtok(NULL, " ");
+		tokencp = strtok(NULL, delimita);
 		i++;
 	}
 	flagsarr[i] = NULL;
