@@ -23,18 +23,10 @@ int cli_arg(char **argv)
 	buff = malloc(256);
 	while (fgets(buff, sizeof(buff), filename) != NULL)
 	{
-<<<<<<< HEAD
-		/*buff[strlen(buff) - 1] = '\0';
-		buff[strlen(buff) - 2] = '\0';*/
-
-=======
 		count++;
 		buff[strcspn(buff, "\n")] = '\0';
->>>>>>> a9795c8178e12ab57ee9c40cbd6621817a0d14a5
 		cmd = stringparse(buff);
 		cmdpath = get_path_command(cmd, tokdirs);
-		/*if (!(access(cmdpath, F_OK) == 0))*/
-	               /* dprintf(STDOUT_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);*/
 		execute(cmdpath, cmd);
 
 		free(cmd);
