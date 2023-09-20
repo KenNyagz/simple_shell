@@ -37,6 +37,7 @@ void _free(char **cmd);
 void _setenv(char *buf);
 void _unsetenv(char *buf);
 void eof(char *buffer);
+ void prompt_disp(void);
 
 /**
 *struct inbuiltcmd - links input string to relevant function

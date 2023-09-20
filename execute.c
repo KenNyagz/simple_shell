@@ -71,3 +71,18 @@ void eof(char *buffer)
 	free(buffer);
 	exit(0);
 }
+
+/**
+  *prompt_disp - displays prompt
+  *
+  *Return: Nothing
+  */
+
+void prompt_disp(void)
+{
+	if (isatty(STDIN_FILENO))
+	{
+		char *prompt = "$ ";
+		write(STDOUT_FILENO, prompt, 2);
+	}
+}

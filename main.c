@@ -12,25 +12,25 @@ int readrtn, count = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 
-if (!isatty(STDIN_FILENO))
-	perror("Non-interactive mode. Run script to continue");
-
 while (1)
 {
 	count++;
-	write(STDOUT_FILENO, "$ ", 2);
+	prompt_disp();
 	fflush(stdout);
 	readrtn = getline(&buffer, &charnum, stdin);
 	if (readrtn == EOF)
 		eof(buffer);
 	if (readrtn == -1)
+	{
+		free(buffer);
 		exit(EXIT_FAILURE);
-	if ((strcmp(buffer, "\n") == 0) || (buffer[0]  == '#'))
+	}
+	if (strcmp(buffer, "\n") == 0)
 		continue;
 
 	new_buffer(&buffer);
 	cmd = stringparse(buffer);
-	if (strcmp(cmd[0], "exit") == 0)
+	if (strcmp(cmd[0], "exit") == 0) 
 		exithandling(cmd, buffer, argc, argv);
 	else
 		cmdpath = get_path_command(cmd, tokdirs);

@@ -13,6 +13,7 @@ void new_buffer(char **buffer)
 	size_t len;
 	char *rmv_hash, *buff;
 
+	rem_newln(*buffer);
 	rmv_hash = strchr(*buffer, '#');
 	if (rmv_hash != NULL)
 	{
