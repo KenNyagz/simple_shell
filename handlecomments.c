@@ -19,7 +19,7 @@ void new_buffer(char **buffer)
 	{
 		len = strlen(*buffer) - strlen(rmv_hash);
 		buff = (char *)malloc(len + 256);
-		
+
 		if (buff != NULL)
 		{
 			strncpy(buff, *buffer, len);

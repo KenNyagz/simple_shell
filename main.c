@@ -12,6 +12,8 @@ int readrtn, count = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 
+if (!(argc != 0))
+	perror("Provide atleast one argument");
 while (1)
 {
 	count++;
@@ -28,11 +30,10 @@ while (1)
 	if (strcmp(buffer, "\n") == 0)
 		continue;
 
-	/*new_buffer(&buffer);*/
 	rem_newln(buffer);
 	cmd = stringparse(buffer);
-	if (strcmp(cmd[0], "exit") == 0) 
-		exithandling(cmd, buffer, argc, argv);
+	if (strcmp(cmd[0], "exit") == 0)
+		exithandling(cmd, buffer);
 	else
 		cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))

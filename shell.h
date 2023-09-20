@@ -19,7 +19,7 @@ int execve(const char *pathname, char *const argv[], char *const envp[]);
 char **stringparse(char *buffer);
 char *dirconcat(char *str_a, char *str_b);
 int access(const char *pathname, int mode);
-int exithandling(char **cmd, char *buffer, int argc, char **argv);
+int exithandling(char **cmd, char *buffer);
 char **get_tok_path(void);
 char *get_path_command(char **cmd, char **tokdirs);
 void changedir(char *buf);
@@ -37,7 +37,7 @@ void _free(char **cmd);
 void _setenv(char *buf);
 void _unsetenv(char *buf);
 void eof(char *buffer);
- void prompt_disp(void);
+void prompt_disp(void);
 
 /**
 *struct inbuiltcmd - links input string to relevant function

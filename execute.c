@@ -83,6 +83,7 @@ void prompt_disp(void)
 	if (isatty(STDIN_FILENO))
 	{
 		char *prompt = "$ ";
+
 		write(STDOUT_FILENO, prompt, 2);
 	}
 }
