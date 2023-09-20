@@ -12,6 +12,7 @@ char **stringparse(char *buffer)
 	char *delimita = " ";
 	int tokencnt = 0, i = 0, j = 0;
 
+	rem_newln(buffer);
 	buffercpy = malloc(strlen(buffer) * sizeof(char) + 256);
 
 	if (buffercpy == NULL)
