@@ -56,3 +56,18 @@ for (i = 0; cmd[i] != NULL; i++)
 free(cmd);
 
 }
+
+/**
+  *eof - end of file condition
+  *
+  *@buffer: pointer to input
+  *Return: nothing
+  */
+
+void eof(char *buffer)
+{
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	free(buffer);
+	exit(0);
+}

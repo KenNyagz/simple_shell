@@ -21,8 +21,10 @@ while (1)
 	write(STDOUT_FILENO, "$ ", 2);
 	fflush(stdout);
 	readrtn = getline(&buffer, &charnum, stdin);
+	if (readrtn == EOF)
+		eof(buffer);
 	if (readrtn == -1)
-		break;
+		exit(EXIT_FAILURE);
 	if ((strcmp(buffer, "\n") == 0) || (buffer[0]  == '#'))
 		continue;
 
