@@ -28,7 +28,8 @@ while (1)
 	if (strcmp(buffer, "\n") == 0)
 		continue;
 
-	new_buffer(&buffer);
+	/*new_buffer(&buffer);*/
+	rem_newln(buffer);
 	cmd = stringparse(buffer);
 	if (strcmp(cmd[0], "exit") == 0) 
 		exithandling(cmd, buffer, argc, argv);
