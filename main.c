@@ -12,7 +12,6 @@ int readrtn, count = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 
-handlers_init();
 if (!isatty(STDIN_FILENO))
 	perror("Non-interactive mode. Run script to continue");
 

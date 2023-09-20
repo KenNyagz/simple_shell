@@ -79,7 +79,7 @@ int i;
 
 /**
 *_printenv - prints environment
-*@flags: input string
+*@buffer: input string
 *
 *Return: void
 */
