@@ -6,6 +6,7 @@
 *@argv: array conatining arguements
 *Return: 0 -success
 */
+
 int main(int argc, char *argv[])
 {
 int readrtn, count = 0;
@@ -27,6 +28,7 @@ while (1)
 	if ((strcmp(buffer, "\n") == 0) || (buffer[0]  == '#'))
 		continue;
 
+	/*checkbuiltins(buffer);*/
 	new_buffer(&buffer);
 	cmd = stringparse(buffer);
 	if (strcmp(cmd[0], "exit") == 0)

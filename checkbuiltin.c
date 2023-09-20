@@ -1,52 +1,23 @@
 #include "shell.h"
 
 /**
-*
-*
-*
-*
+*checkbuiltins - checks for internal commands
+*@buf: input string
+*Return: Void
 */
 
-/*void checkbuiltins(char **cmd)
+char *checkbuiltins(char *buf)
 {
-int i = 0;
 
-builtin builtin_arr[] = {
+buf[strlen(buf) - 1] = '\0';
+if (strncmp(buf, "cd", 2) == 0)
+	changedir(buf);
+else if (strncmp(buf, "printenv", 8) == 0 || (strncmp(buf, "env", 3) == 0))
+	_printenv(buf);
+else if (strncmp(buf, "setenv", 6) == 0)
+	_setenv(buf);
+else if (strncmp(buf, "unsetenv", 8) == 0)
+	_unsetenv(buf);
 
-{"cd", &changedir},
-{"printenv", &_printenv},
-{"env", &_printenv},
-{"setenv", &_setenv},
-{"unsetenv", &_unsetenv}
-};
-
-cmd[strlen(cmd) - 1] = '\0';
-
-	for (i = 0; i < 5; i++)
-	{
-		if (strncmp(builtin_arr[i].str, cmd, strlen(cmd)) == 0)
-			builtin_arr[i].func(cmd);
-		else perror("not found");
-	}
+return (buf);
 }
-
-int main (void)
-{
-char *buffer = NULL;
-size_t n = 0;
-
-while(1)
-{
-printf("$ ");
-if(getline(&buffer, &n, stdin) == -1)
-	break;
-checkbuiltins(buffer);
-}
-
-<<<<<<< HEAD
-free(buffer);
-return (0);
-}
-=======
-}*/
-

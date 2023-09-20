@@ -36,7 +36,7 @@ void h_sigtstp(int sig);
 void _free(char **cmd);
 void _setenv(char *buf);
 void _unsetenv(char *buf);
-
+char *checkbuiltins(char *buf);
 
 /**
 *struct inbuiltcmd - links input string to relevant function

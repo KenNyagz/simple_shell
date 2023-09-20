@@ -18,7 +18,7 @@ char *tkn, *bufcp;
 		setenv("PWD", newpwd, 1);
 		return;
 	}
-	else if (strcmp(buf, "cd -") == 0)
+	else if ((strcmp(buf, "cd -") == 0))
 	{
 		newpwd = getenv("OLDPWD");
 		chdir(newpwd);
