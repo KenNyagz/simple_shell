@@ -27,7 +27,7 @@ while (1)
 		free(buffer);
 		exit(EXIT_FAILURE);
 	}
-	if (strcmp(buffer, "\n") == 0)
+	if ((strcmp(buffer, "\n") == 0) || buffer[0] == ' ')
 		continue;
 
 	checkbuiltins(buffer);
