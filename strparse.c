@@ -9,7 +9,7 @@
 char **stringparse(char *buffer)
 {
 	char *token = NULL, *buffercpy = NULL, **flagsarr = NULL, *tokencp = NULL;
-	char *delimita = " ";
+	char *delimita = " \t\n";
 	int tokencnt = 0, i = 0, j = 0;
 
 	buffercpy = malloc((strlen(buffer) + 1) * sizeof(char));

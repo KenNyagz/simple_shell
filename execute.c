@@ -34,7 +34,10 @@ pid_t pid;
 	else if (pid == 0)
 	{
 		if ((execve(cmdpath, cmd, environ)) == -1)
+		{
 			perror("Execution failed, try again");
+			exit(1);
+		}
 	}
 	else
 		wait(NULL);

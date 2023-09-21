@@ -25,19 +25,20 @@ char *get_path_command(char **cmd, char **tokdirs);
 void changedir(char *buf);
 void new_buffer(char **buffer);
 void variablerep(char *buf);
-void _printenv(char *buffer);
+void _printenv(char *buf);
 
 void handlers_init(void);
 void h_sigint(int sig);
 void h_sigterm(int sig);
 void h_sigsegv(int sig);
 void h_sigtstp(int sig);
-
+void checkbuiltins(char *buf);
 void _free(char **cmd);
 void _setenv(char *buf);
 void _unsetenv(char *buf);
 void eof(char *buffer);
 void prompt_disp(void);
+void abs_path(char **cmd, char **argv, char *buffer);
 
 /**
 *struct inbuiltcmd - links input string to relevant function
