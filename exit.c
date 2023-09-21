@@ -19,12 +19,26 @@ int exithandling(char **cmd, char *buffer)
 		status = atoi(cmd[1]);
 	if (status == -1)
 	{
-		return (-1);
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(buffer);
+		free(cmd);
+		exit(EXIT_FAILURE);
 	}
-
-	for (i = 0; cmd[i] != NULL; i++)
-		free(cmd[i]);
-	free(cmd);
-	free(buffer);
-	exit(status);
+	if (status == 0)
+	{
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(buffer);
+		free(cmd);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		for (i = 0; cmd[i] != NULL; i++)
+			free(cmd[i]);
+		free(buffer);
+		free(cmd);
+		exit(status);
+	}
 }
