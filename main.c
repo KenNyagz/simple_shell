@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 int readrtn, count = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
-
 if (!(argc != 0))
 	perror("Provide atleast one argument");
 while (1)
@@ -27,9 +26,8 @@ while (1)
 		free(buffer);
 		exit(EXIT_FAILURE);
 	}
-	if ((strcmp(buffer, "\n") == 0) || buffer[0] == ' ')
+	if ((strcmp(buffer, "\n") == 0))
 		continue;
-
 	checkbuiltins(buffer);
 	rem_newln(buffer);
 	cmd = stringparse(buffer);
@@ -46,7 +44,6 @@ while (1)
 		dprintf(STDOUT_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);
 	else
 		execute(cmdpath, cmd);
-
 	if (cmd != NULL)
 		_free(cmd);
 }
