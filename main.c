@@ -8,7 +8,8 @@
 */
 int main(int argc, char *argv[])
 {
-int readrtn, count = 0;
+int count = 0;
+ssize_t readrtn = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
 if (!(argc != 0))
@@ -26,7 +27,7 @@ while (1)
 		free(buffer);
 		exit(EXIT_FAILURE);
 	}
-	if ((strcmp(buffer, "\n") == 0))
+	if ((strcmp(buffer, "\n") == 0) || buffer[0] == ' ')
 		continue;
 	checkbuiltins(buffer);
 	rem_newln(buffer);
