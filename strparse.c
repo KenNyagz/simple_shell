@@ -13,13 +13,11 @@ char **stringparse(char *buffer)
 	int tokencnt = 0, i = 0, j = 0;
 
 	buffercpy = malloc((strlen(buffer) + 1) * sizeof(char));
-
 	if (buffercpy == NULL)
 	{
 		perror("Memory allocation failed");
 		return (NULL);
 	}
-
 	strcpy(buffercpy, buffer);
 	token = strtok(buffer, delimita);
 	while (token != NULL)
@@ -27,8 +25,11 @@ char **stringparse(char *buffer)
 		tokencnt++;
 		token = strtok(NULL, delimita);
 	}
-
 	flagsarr = malloc(sizeof(char *) * (tokencnt + 1));
+	if (flagsarr == NULL)
+	{
+		return (NULL);
+	}
 	tokencp = strtok(buffercpy, delimita);
 	while (tokencp != NULL)
 	{

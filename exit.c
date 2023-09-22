@@ -24,7 +24,7 @@ int exithandling(char **cmd, char *buffer)
 			free(cmd[i]);
 		free(buffer);
 		free(cmd);
-	        exit(status);
+		exit(status);
 	}
 	if (status == 0)
 	{
@@ -36,10 +36,6 @@ int exithandling(char **cmd, char *buffer)
 	}
 	else
 	{
-		/*for (i = 0; cmd[i] != NULL; i++)
-			free(cmd[i]);
-		free(buffer);
-		free(cmd);*/
 		return (-1);
 	}
 }

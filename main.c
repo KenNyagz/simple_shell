@@ -23,11 +23,8 @@ while (1)
 	readrtn = getline(&buffer, &charnum, stdin);
 	if (readrtn == EOF)
 		eof(buffer);
-	if (readrtn == -1)
-	{
-		free(buffer);
-		exit(EXIT_FAILURE);
-	}
+	getlinefail(readrtn, buffer);
+
 	if ((strcmp(buffer, "\n") == 0) || (buffer[0] == ' ') || (buffer[0] == '#'))
 		continue;
 	new_buffer(&buffer);

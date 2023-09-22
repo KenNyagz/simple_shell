@@ -30,3 +30,19 @@ void abs_path(char **cmd, char **argv, char *buffer)
 	if (cmd != NULL)
 		_free(cmd);
 }
+
+/*
+*getlinefail - exits the shell if getline fails
+*@readrtn: getline return value
+*@buffer: input string
+*Return: Void
+*/
+
+void getlinefail(ssize_t readrtn, char *buffer)
+{
+	if (readrtn == -1)
+	{
+		free(buffer);
+		exit(EXIT_FAILURE);
+	}
+}
