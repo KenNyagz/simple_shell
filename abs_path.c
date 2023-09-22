@@ -22,7 +22,7 @@ void abs_path(char **cmd, char **argv, char *buffer)
 	{
 		strcpy(cmdpath, cmd[0]);
 		if (!(access(cmdpath, F_OK) == 0))
-			dprintf(STDOUT_FILENO, "%s: %s: not found\n", argv[0], buffer);
+			dprintf(STDERR_FILENO, "%s: %s: not found\n", argv[0], buffer);
 		else
 			execute(cmdpath, cmd);
 	}
