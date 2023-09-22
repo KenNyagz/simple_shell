@@ -10,7 +10,7 @@
   *Return: returns nothing on success and -1 on failure
   */
 
-void exithandling(char **cmd, char *buffer)
+int exithandling(char **cmd, char *buffer)
 {
 	int status, i;
 
@@ -36,11 +36,10 @@ void exithandling(char **cmd, char *buffer)
 	}
 	else
 	{
-		fprintf(stderr, "%d entry not allowed\n", status);
-		for (i = 0; cmd[i] != NULL; i++)
+		/*for (i = 0; cmd[i] != NULL; i++)
 			free(cmd[i]);
 		free(buffer);
-		free(cmd);
-		exit(EXIT_FAILURE);
+		free(cmd);*/
+		return (-1);
 	}
 }
