@@ -13,19 +13,21 @@ void new_buffer(char **buffer)
 	size_t len;
 	char *rmv_hash, *buff;
 
-	/*rem_newln(*buffer);*/
-	rmv_hash = strchr(*buffer, '#');
-	if (rmv_hash != NULL)
+	if (!(strncmp(*buffer, "echo", 4) == 0))
 	{
-		len = strlen(*buffer) - strlen(rmv_hash);
-		buff = (char *)malloc(len + 256);
-
-		if (buff != NULL)
+		rmv_hash = strchr(*buffer, '#');
+		if (rmv_hash != NULL)
 		{
-			strncpy(buff, *buffer, len);
-			buff[len] = '\0';
-			free(*buffer);
-			*buffer = buff;
+			len = strlen(*buffer) - strlen(rmv_hash);
+			buff = (char *)malloc(len + 256);
+
+			if (buff != NULL)
+			{
+				strncpy(buff, *buffer, len);
+				buff[len] = '\0';
+				free(*buffer);
+				*buffer = buff;
+			}
 		}
 	}
 }
