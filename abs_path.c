@@ -31,7 +31,7 @@ void abs_path(char **cmd, char **argv, char *buffer)
 		_free(cmd);
 }
 
-/*
+/**
 *getlinefail - exits the shell if getline fails
 *@readrtn: getline return value
 *@buffer: input string
