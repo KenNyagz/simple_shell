@@ -10,13 +10,14 @@
   *Return: returns nothing on success and -1 on failure
   */
 
-int exithandling(char **cmd, char *buffer)
+void exithandling(char **cmd, char *buffer)
 {
 	int status, i;
 
 	status = 0;
 	if (cmd[1] != NULL)
 		status = atoi(cmd[1]);
+
 	if (status > 0)
 	{
 		for (i = 0; cmd[i] != NULL; i++)
@@ -35,11 +36,11 @@ int exithandling(char **cmd, char *buffer)
 	}
 	else
 	{
-		/*fprintf(stderr, "Unallowed entry %d\n", status);*/
+		fprintf(stderr, "%d entry not allowed\n", status);
 		for (i = 0; cmd[i] != NULL; i++)
 			free(cmd[i]);
 		free(buffer);
 		free(cmd);
-		return (status);
+		exit(EXIT_FAILURE);
 	}
 }

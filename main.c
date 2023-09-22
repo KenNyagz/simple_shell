@@ -43,7 +43,7 @@ while (1)
 	else
 		cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
-		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);
+		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], count, buffer);
 	else
 		execute(cmdpath, cmd);
 	if (cmd != NULL)
