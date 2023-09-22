@@ -17,13 +17,13 @@ int exithandling(char **cmd, char *buffer)
 	status = 0;
 	if (cmd[1] != NULL)
 		status = atoi(cmd[1]);
-	if (status == -1)
+	if (status > 0)
 	{
 		for (i = 0; cmd[i] != NULL; i++)
 			free(cmd[i]);
 		free(buffer);
 		free(cmd);
-		exit(EXIT_FAILURE);
+	        exit(status);
 	}
 	if (status == 0)
 	{
@@ -35,10 +35,11 @@ int exithandling(char **cmd, char *buffer)
 	}
 	else
 	{
+		/*fprintf(stderr, "Unallowed entry %d\n", status);*/
 		for (i = 0; cmd[i] != NULL; i++)
 			free(cmd[i]);
 		free(buffer);
 		free(cmd);
-		exit(status);
+		return (status);
 	}
 }

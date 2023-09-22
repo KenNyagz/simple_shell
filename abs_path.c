@@ -4,7 +4,8 @@
   *abs_path - checks if command is an absolute path
   *
   *@cmd: pointer to tokenized path
-  *
+  *@argv: pointer to arguements
+  *@buffer: pointer to input string
   */
 
 void abs_path(char **cmd, char **argv, char *buffer)

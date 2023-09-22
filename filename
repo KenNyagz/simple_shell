@@ -1,4 +1,4 @@
-pwd
+/bin/ls
 whoami
 cal
 ls -l

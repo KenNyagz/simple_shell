@@ -12,6 +12,7 @@ int count = 0;
 ssize_t readrtn = 0;
 char *cmdpath, **cmd = NULL, **tokdirs = NULL, *buffer = NULL;
 size_t charnum = 0;
+
 if (!(argc != 0))
 	perror("Provide atleast one argument");
 while (1)
@@ -42,7 +43,7 @@ while (1)
 	else
 		cmdpath = get_path_command(cmd, tokdirs);
 	if (!(access(cmdpath, F_OK) == 0))
-		dprintf(STDOUT_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);
+		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", argv[0], count, buffer);
 	else
 		execute(cmdpath, cmd);
 	if (cmd != NULL)
